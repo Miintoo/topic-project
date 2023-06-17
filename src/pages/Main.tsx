@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+type TopicType = {
+  title: string;
+  idx: string;
+  imgPath: string;
+  grade: string;
+};
 
 export default function Main(): JSX.Element {
+  const [topics, setTopics] = useState<TopicType[] | undefined>();
+
+  const getTopics = async () => {
+    const { data } = await axios.get('http://localhost:3001/topic');
+    setTopics(data);
+  };
+
+  useEffect(() => {
+    getTopics();
+  }, []);
+
   return (
     <div>
       <header>토픽 사이트</header>
       <section>
         <article>
-          <ul>
-            <li>아이템1</li>
-          </ul>
+          <ul>{topics ? topics.map((topic: TopicType) => <li>{topic.title}</li>) : ''}</ul>
         </article>
       </section>
     </div>
