@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Topic from '../components/Topic';
 
 type TopicType = {
   title: string;
@@ -25,7 +26,13 @@ export default function Main(): JSX.Element {
       <header>토픽 사이트</header>
       <section>
         <article>
-          <ul>{topics ? topics.map((topic: TopicType) => <li>{topic.title}</li>) : ''}</ul>
+          <ul>
+            {topics
+              ? topics.map((topic: TopicType) => (
+                  <Topic key={topic.idx} title={topic.title} imgPath={topic.imgPath} grade={topic.grade} />
+                ))
+              : ''}
+          </ul>
         </article>
       </section>
     </div>
