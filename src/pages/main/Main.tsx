@@ -3,7 +3,6 @@ import axios from 'axios';
 import Topic from '../../components/topic/Topic';
 import {
   Container,
-  Header,
   ItemContainer,
   Section,
   TopicArticle,
@@ -50,7 +49,6 @@ export default function Main(): JSX.Element {
 
   return (
     <Container>
-      <Header>토픽 사이트</Header>
       <Section>
         <InfoArticle>
           <InputContainer>

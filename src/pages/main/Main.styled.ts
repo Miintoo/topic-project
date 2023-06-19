@@ -4,8 +4,6 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const Header = styled.header``;
-
 const Section = styled.section`
   max-width: 1180px;
   margin: auto;
@@ -89,7 +87,6 @@ const ItemContainer = styled.ul`
 
 export {
   Container,
-  Header,
   ItemContainer,
   Section,
   TopicArticle,
