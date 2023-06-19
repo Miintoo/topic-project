@@ -12,15 +12,26 @@ type TopicType = {
 
 export default function Main(): JSX.Element {
   const [topics, setTopics] = useState<TopicType[] | undefined>();
+  const [storageTopics, setStorageTopics] = useState<TopicType[] | undefined>();
 
   const getTopics = async () => {
     const { data } = await axios.get('http://localhost:3001/topic');
     setTopics(data);
+    setStorageTopics(data);
   };
 
   useEffect(() => {
     getTopics();
   }, []);
+
+  const handleCategory = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    if (e.target.value === '전체') {
+      setTopics(storageTopics);
+      return;
+    }
+    const newTopics = storageTopics?.filter((topic) => topic.grade === e.target.value);
+    setTopics(newTopics);
+  };
 
   return (
     <Container>
@@ -32,7 +43,7 @@ export default function Main(): JSX.Element {
               <input type="text" placeholder="토픽 제목 검색" />
             </form>
           </div>
-          <select name="category">
+          <select name="category" onChange={handleCategory}>
             <option value="전체">전체</option>
             <option value="입문">입문</option>
             <option value="초급">초급</option>
