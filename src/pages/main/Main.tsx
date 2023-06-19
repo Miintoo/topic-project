@@ -66,7 +66,13 @@ export default function Main(): JSX.Element {
         <TopicArticle>
           <ItemContainer>
             {topics?.map((topic: TopicType) => (
-              <Topic key={topic.idx} title={topic.title} imgPath={topic.imgPath} grade={topic.grade} />
+              <Topic
+                key={topic.idx}
+                title={topic.title}
+                imgPath={topic.imgPath}
+                grade={topic.grade}
+                index={topic.idx}
+              />
             ))}
           </ItemContainer>
         </TopicArticle>
