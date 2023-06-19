@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Topic from '../../components/topic/Topic';
-import { Container, Header, ItemContainer } from './Main.styled';
+import {
+  Container,
+  Header,
+  ItemContainer,
+  Section,
+  TopicArticle,
+  CategorySelectButton,
+  InfoArticle
+} from './Main.styled';
 
 type TopicType = {
   title: string;
@@ -36,23 +44,23 @@ export default function Main(): JSX.Element {
   return (
     <Container>
       <Header>토픽 사이트</Header>
-      <section>
-        <article>
+      <Section>
+        <InfoArticle>
           <div>
             <form action="get">
               <input type="text" placeholder="토픽 제목 검색" />
             </form>
           </div>
-          <select name="category" onChange={handleCategory}>
+          <CategorySelectButton name="category" onChange={handleCategory}>
             <option value="전체">전체</option>
             <option value="입문">입문</option>
             <option value="초급">초급</option>
             <option value="중급">중급</option>
             <option value="중고급">중고급</option>
             <option value="고급">고급</option>
-          </select>
-        </article>
-        <article>
+          </CategorySelectButton>
+        </InfoArticle>
+        <TopicArticle>
           <ItemContainer>
             {topics
               ? topics.map((topic: TopicType) => (
@@ -60,8 +68,8 @@ export default function Main(): JSX.Element {
                 ))
               : ''}
           </ItemContainer>
-        </article>
-      </section>
+        </TopicArticle>
+      </Section>
     </Container>
   );
 }
