@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Item = styled.li`
-  width: 16%;
+  width: 14.76%;
   padding: 0 0.7rem 2rem;
 `;
 
