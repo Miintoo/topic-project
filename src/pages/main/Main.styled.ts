@@ -15,6 +15,32 @@ const InfoArticle = styled.article`
   position: relative;
 `;
 
+const InputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  margin-top: 2rem;
+`;
+
+const SearchInput = styled.input`
+  width: 18rem;
+  height: 3rem;
+  padding: 0 1rem 0 1rem;
+
+  outline: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+
+  font-size: 1.2rem;
+  color: #444;
+
+  &::placeholder {
+    font-size: 0.9rem;
+
+    opacity: 0.4;
+  }
+`;
+
 const CategorySelectButton = styled.select`
   position: absolute;
   right: 3rem;
@@ -61,4 +87,14 @@ const ItemContainer = styled.ul`
   flex-wrap: wrap;
 `;
 
-export { Container, Header, ItemContainer, Section, TopicArticle, CategorySelectButton, InfoArticle };
+export {
+  Container,
+  Header,
+  ItemContainer,
+  Section,
+  TopicArticle,
+  CategorySelectButton,
+  InfoArticle,
+  InputContainer,
+  SearchInput
+};

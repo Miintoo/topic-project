@@ -8,7 +8,9 @@ import {
   Section,
   TopicArticle,
   CategorySelectButton,
-  InfoArticle
+  InfoArticle,
+  InputContainer,
+  SearchInput
 } from './Main.styled';
 
 type TopicType = {
@@ -51,9 +53,9 @@ export default function Main(): JSX.Element {
       <Header>토픽 사이트</Header>
       <Section>
         <InfoArticle>
-          <div>
-            <input type="text" placeholder="토픽 제목 검색" onChange={handleSearch} />
-          </div>
+          <InputContainer>
+            <SearchInput type="text" placeholder="제목 검색" onChange={handleSearch} />
+          </InputContainer>
           <CategorySelectButton name="category" onChange={handleCategory}>
             <option value="전체">전체</option>
             <option value="입문">입문</option>
