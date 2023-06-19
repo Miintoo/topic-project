@@ -32,7 +32,12 @@ export default function Main(): JSX.Element {
     getTopics();
   }, []);
 
-  const handleCategory = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTopics = storageTopics?.filter((topic) => topic.title.includes(e.target.value));
+    setTopics(searchTopics);
+  };
+
+  const handleCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.target.value === '전체') {
       setTopics(storageTopics);
       return;
@@ -47,9 +52,7 @@ export default function Main(): JSX.Element {
       <Section>
         <InfoArticle>
           <div>
-            <form action="get">
-              <input type="text" placeholder="토픽 제목 검색" />
-            </form>
+            <input type="text" placeholder="토픽 제목 검색" onChange={handleSearch} />
           </div>
           <CategorySelectButton name="category" onChange={handleCategory}>
             <option value="전체">전체</option>
@@ -62,11 +65,9 @@ export default function Main(): JSX.Element {
         </InfoArticle>
         <TopicArticle>
           <ItemContainer>
-            {topics
-              ? topics.map((topic: TopicType) => (
-                  <Topic key={topic.idx} title={topic.title} imgPath={topic.imgPath} grade={topic.grade} />
-                ))
-              : ''}
+            {topics?.map((topic: TopicType) => (
+              <Topic key={topic.idx} title={topic.title} imgPath={topic.imgPath} grade={topic.grade} />
+            ))}
           </ItemContainer>
         </TopicArticle>
       </Section>
