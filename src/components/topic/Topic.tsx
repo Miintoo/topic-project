@@ -44,7 +44,7 @@ export default function Topic({ title, imgPath, grade, index }: TopicType): JSX.
   return (
     <Item>
       <p>
-        <Image src={imgPath} alt="토픽 이미지" />
+        <Image src={imgPath} loading="lazy" width="170" height="170" alt="토픽 이미지" />
       </p>
       <Title>{title}</Title>
       <StatusContainer>
