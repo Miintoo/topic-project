@@ -24,7 +24,7 @@ export default function Main(): JSX.Element {
   const [storageTopics, setStorageTopics] = useState<TopicType[] | undefined>();
 
   const getTopics = async () => {
-    const { data } = await axios.get('http://localhost:3001/topic');
+    const { data } = await axios.get(`${process.env.REACT_APP_API_HOST}/topic`);
     setTopics(data);
     setStorageTopics(data);
   };
